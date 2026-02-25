@@ -59,12 +59,21 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
+      - name: Restore NVD database cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.owasp/dependency-check-data
+          key: owasp-nvd-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            owasp-nvd-${{ runner.os }}-
+
       - name: OWASP Dependency Check
         run: |
           ./mvnw --batch-mode --no-transfer-progress \
             org.owasp:dependency-check-maven:check \
             -DfailBuildOnCVSS=9 \
-            -DnvdApiKey=${{ secrets.NVD_API_KEY }}
+            -DnvdApiKey=${{ secrets.NVD_API_KEY }} \
+            -DdataDirectory=$HOME/.owasp/dependency-check-data
         continue-on-error: true
 
       - name: Upload vulnerability report
