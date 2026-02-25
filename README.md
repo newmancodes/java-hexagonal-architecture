@@ -1,5 +1,7 @@
 # Hexagonal Architecture in Java
 
+[![CI](https://github.com/newmancodes/java-hexagonal-architecture/actions/workflows/main.yml/badge.svg)](https://github.com/newmancodes/java-hexagonal-architecture/actions/workflows/main.yml)
+
 Used [Spring Initializr](https://start.spring.io/) to create the project, selecting the following options:
 
 - Project: Maven
