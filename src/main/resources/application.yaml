@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: Java Hexagonal Architecture with Spring
