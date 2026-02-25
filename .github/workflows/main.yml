@@ -63,7 +63,8 @@ jobs:
         run: |
           ./mvnw --batch-mode --no-transfer-progress \
             org.owasp:dependency-check-maven:check \
-            -DfailBuildOnCVSS=9
+            -DfailBuildOnCVSS=9 \
+            -DnvdApiKey=${{ secrets.NVD_API_KEY }}
         continue-on-error: true
 
       - name: Upload vulnerability report
